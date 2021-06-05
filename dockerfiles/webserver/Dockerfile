@@ -26,7 +26,7 @@ RUN chown -R node:node /home/node/app
 USER node
 RUN rm -rf ./node_modules/*
 RUN npm install
-COPY --chown=node:node . .
+COPY --chown=node:node ../.. .
 EXPOSE 8000
 CMD [ "nohup", "node", "index.js" ]
 
