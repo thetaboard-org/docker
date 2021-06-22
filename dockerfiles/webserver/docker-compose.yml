@@ -49,4 +49,3 @@ volumes:
 networks:
   backend:
     name: ${GUARDIANNAME}backend
-    driver: 'bridge'
