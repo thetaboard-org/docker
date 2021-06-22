@@ -24,6 +24,7 @@ services:
       - NODE_ENV=${NODE_ENV}
       - DB=${DB}
       - MYSQL_PASS=${MYSQL_PASS}
+      - MYSQL_PORT=${MYSQL_PORT}
   db:
     image: "mariadb:10.5"
     restart: always
@@ -34,7 +35,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_PASS}
       MYSQL_DATABASE: thetaboard
     ports:
-      - 3306:3306
+      - ${MYSQL_PORT}:3306
     networks:
       - backend
 
