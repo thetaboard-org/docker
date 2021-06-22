@@ -1,0 +1,51 @@
+services:
+  web:
+    build:
+      context: ../../../
+      dockerfile: docker/dockerfiles/webserver/Dockerfile
+    image: "maurinl/thetaboard:latest"
+    container_name: ${GUARDIANNAME}webserver
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - THETABOARD:/home/node/theta_mainnet
+      - ../../../webserver/config:/home/node/app/webserver/config
+    links:
+      - db:127.0.0.1
+    networks:
+      - backend
+    depends_on:
+      - db
+    environment:
+      - NODE_PASSWORD=${NODE_PASSWORD}
+      - API_TOKEN=${API_TOKEN}
+      - PUBLIC=${PUBLIC}
+      - PORT=${PORT}
+      - NODE_ENV=${NODE_ENV}
+      - DB=${DB}
+      - MYSQL_PASS=${MYSQL_PASS}
+  db:
+    image: "mariadb:10.5"
+    restart: always
+    container_name: ${GUARDIANNAME}mariadb
+    volumes:
+      - mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASS}
+      MYSQL_DATABASE: thetaboard
+    ports:
+      - 3306:3306
+    networks:
+      - backend
+
+volumes:
+  THETABOARD:
+    name: ${GUARDIANNAME}THETABOARD
+  mysql:
+    name: ${GUARDIANNAME}mysql
+
+
+networks:
+  backend:
+    name: ${GUARDIANNAME}backend
+    driver: 'bridge'
