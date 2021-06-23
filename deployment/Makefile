@@ -3,7 +3,7 @@ start_thetaboard:
 	docker-compose -f ../dockerfiles/webserver/docker-compose.yml -p ${GUARDIANNAME}THETABOARD up -d
 
 kill_thetaboard:
-	docker rm -f ${GUARDIANNAME}THETABOARD
+	docker-compose -f ../dockerfiles/webserver/docker-compose.yml -p ${GUARDIANNAME}THETABOARD down
 
 build_thetaboard:
 	docker-compose -f ../dockerfiles/webserver/docker-compose.yml build
