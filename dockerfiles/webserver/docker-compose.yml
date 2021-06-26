@@ -19,7 +19,6 @@ services:
     environment:
       - NODE_PASSWORD=${NODE_PASSWORD}
       - API_TOKEN=${API_TOKEN}
-      - PUBLIC=${PUBLIC}
       - PORT=${PORT}
       - NODE_ENV=${NODE_ENV}
       - DB=${DB}
