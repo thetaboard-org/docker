@@ -33,6 +33,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_PASS}
       MYSQL_DATABASE: thetaboard
+    command: mysqld --innodb-buffer-pool-size=10G --key_buffer_size=10M
     ports:
       - ${MYSQL_PORT}:3306
     networks:
