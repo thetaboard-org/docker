@@ -3,7 +3,7 @@ services:
     build:
       context: ../../../
       dockerfile: docker/dockerfiles/webserver/Dockerfile
-    image: "maurinl/thetaboard:latest"
+    image: "maurinl/thetaboard:${TAG}"
     container_name: ${GUARDIANNAME}webserver
     ports:
       - "${PORT}:${PORT}"
