@@ -10,7 +10,7 @@ services:
     volumes:
       - THETABOARD:/home/node/theta_mainnet
       - ../../../webserver/config:/home/node/app/webserver/config
-      - /opt/assets:/home/node/app/webserver/modules/nifties/assets
+      - /opt/assets:/home/node/app/modules/nifties/assets
     links:
       - db:127.0.0.1
     networks:
