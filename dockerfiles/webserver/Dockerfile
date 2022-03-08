@@ -1,4 +1,4 @@
-FROM node:16-buster
+FROM node:14-buster
 
 # guardian node prereq
 RUN apt update
