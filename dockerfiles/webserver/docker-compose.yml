@@ -39,19 +39,6 @@ services:
       - ${MYSQL_PORT}:3306
     networks:
       - backend
-  mongo:
-    image: mongo:5.0.6
-    restart: always
-    container_name: ${GUARDIANNAME}mongo
-    volumes:
-      - mongo:/data/db
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: ${MYSQL_PASS}
-    ports:
-      - ${MONGO_PORT}:27017
-    networks:
-      - backend
 
 volumes:
   THETABOARD:
