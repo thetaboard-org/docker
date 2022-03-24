@@ -13,7 +13,6 @@ services:
       - /opt/assets:/home/node/app/modules/nifties/assets
     links:
       - db:127.0.0.1
-      - mongo:127.0.0.1
     networks:
       - backend
     depends_on:
@@ -59,8 +58,6 @@ volumes:
     name: ${GUARDIANNAME}THETABOARD
   mysql:
     name: ${GUARDIANNAME}mysql
-  mongo:
-    name: ${GUARDIANNAME}mongo
 
 
 networks:
