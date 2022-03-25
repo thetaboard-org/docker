@@ -24,8 +24,6 @@ services:
       - API_TOKEN=${API_TOKEN}
       - PORT=${PORT}
       - NODE_ENV=${NODE_ENV}
-      - MYSQL_PASS=${MYSQL_PASS}
-      - MYSQL_PORT=${MYSQL_PORT}
   maria:
     image: "mariadb:10.5"
     restart: always
