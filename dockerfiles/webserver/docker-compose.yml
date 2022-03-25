@@ -12,21 +12,21 @@ services:
       - ../../../webserver/config:/home/node/app/webserver/config
       - /opt/assets:/home/node/app/modules/nifties/assets
     links:
-      - db:127.0.0.1
+      - maria:127.0.0.1
       - mongo:127.0.0.1
     networks:
       - backend
     depends_on:
-      - db
+      - maria
+      - mongo
     environment:
       - NODE_PASSWORD=${NODE_PASSWORD}
       - API_TOKEN=${API_TOKEN}
       - PORT=${PORT}
       - NODE_ENV=${NODE_ENV}
-      - DB=${DB}
       - MYSQL_PASS=${MYSQL_PASS}
       - MYSQL_PORT=${MYSQL_PORT}
-  db:
+  maria:
     image: "mariadb:10.5"
     restart: always
     container_name: ${GUARDIANNAME}mariadb
