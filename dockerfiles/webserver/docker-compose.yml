@@ -25,6 +25,7 @@ services:
       - PORT=${PORT}
       - NODE_ENV=${NODE_ENV}
       - DB=${DB}
+      - MYSQL_PASS =${MYSQL_PASS}
   maria:
     image: "mariadb:10.5"
     restart: always
