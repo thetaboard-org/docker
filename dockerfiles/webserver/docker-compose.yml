@@ -24,6 +24,7 @@ services:
       - API_TOKEN=${API_TOKEN}
       - PORT=${PORT}
       - NODE_ENV=${NODE_ENV}
+      - DB=${DB}
   maria:
     image: "mariadb:10.5"
     restart: always
