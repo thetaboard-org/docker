@@ -1,21 +1,24 @@
 FROM node:14-buster
 
-# guardian node prereq
-RUN apt update
-RUN apt install -y screen && apt install -y vim
+RUN apt update && apt install -y screen vim
 
-# Webserver /nodejs
+# Create app directory
 RUN mkdir -p /home/node/app/node_modules
 WORKDIR /home/node/app
+
+# Install dependencies as root
 COPY webserver/package.json webserver/package-lock.json ./
 RUN npm install
 
+# Copy the rest of the app (including index.js)
+COPY webserver ./
+COPY ../.. .
+
+# Fix permissions
 RUN chown -R node:node /home/node/app
+
+# Now switch to non-root user
 USER node
 
-COPY webserver ./
-
-COPY --chown=node:node ../.. .
 EXPOSE 8000
-CMD [ "nohup", "node", "index.js" ]
-
+CMD [ "node", "index.js" ]
